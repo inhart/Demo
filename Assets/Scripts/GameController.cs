@@ -27,8 +27,7 @@ public class GameController : MonoBehaviour
         {
             Destroy(this);
         }
-       circle = GameObject.Find("CircleSelector");
-       
+        circle = GameObject.Find("CircleSelector");
     }
     // Update is called once per frame
     void Update()
@@ -47,8 +46,6 @@ public class GameController : MonoBehaviour
             SelectACharacter = true;
             circle.GetComponent<Animator>().SetBool("OpenCircle", true);
             GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(GameObject.Find(null));
-           
-            
             var rAngle = Mathf.Atan2(Input.GetAxis("Vertical2"), Input.GetAxis("Horizontal2"));
             float aAngle = 0;
             if (rAngle >= 0)
@@ -59,35 +56,23 @@ public class GameController : MonoBehaviour
             {
                 aAngle = 360 + Mathf.Rad2Deg * rAngle ;
             }
-
-            Debug.Log(aAngle);
             if((aAngle == 0) && (Input.GetAxis("Vertical2") == 0) && (Input.GetAxis("Horizontal2") == 0))
             {
                 SeleccionPersonaje.sp.SeleccionPers(SeleccionPersonaje.sp.selectedPlayer);
-                
                 return;
             }
             if ((aAngle > 300 || aAngle <=90) && SelectACharacter)
             {
-                
                 GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(GameObject.Find("CircleBottomLine"));
-
-
-
             }
-         if ((aAngle >= 180 && aAngle < 300) && SelectACharacter)
-                {
+            if ((aAngle >= 180 && aAngle < 300) && SelectACharacter)
+            {
                 GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(GameObject.Find("CircleRightLine"));
-
-
             }
             if ((aAngle > 80 && aAngle < 180) && SelectACharacter)
             {
                 GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(GameObject.Find("CircleLeftLine"));
-               
-               
             }
-
         }
         else
         {
@@ -116,7 +101,6 @@ public class GameController : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
-
     }
 
     public void TogglePause()
@@ -137,7 +121,6 @@ public class GameController : MonoBehaviour
     public void ToMainMenu()
     {
         SceneManager.LoadScene("Menu");
-
     }
     public void Tolevel01()
     {
