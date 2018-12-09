@@ -59,8 +59,6 @@ public class SeleccionPersonaje : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-       
-        
         switch (selectedPlayer)
         {
             case 0:
@@ -70,7 +68,6 @@ public class SeleccionPersonaje : MonoBehaviour {
                 Players[1].GetComponent<PlayerMovement>().enabled = false;
                 Players[2].GetComponent<PlayerMovement>().enabled = false;
                 Players[2].GetComponent<Tumble_behavior>().enabled = false;
-
                 cross.SetActive(true);
                 Players[0].GetComponent<PlayerMovement>().enabled = true;
                 Players[0].GetComponent<RopeSystem>().enabled = true;
@@ -99,17 +96,12 @@ public class SeleccionPersonaje : MonoBehaviour {
                 Players[2].GetComponent<PlayerMovement>().enabled = true;
                 Players[2].GetComponent<Tumble_behavior>().enabled = true;
                 camara.transform.position = new Vector3(Players[selectedPlayer].transform.position.x, Players[selectedPlayer].transform.position.y, -10f);
-
                 break;
-
         }
-
     }
     
     public void SeleccionPers(int pers)
     {
         selectedPlayer = pers;
     }
-   
-    
 }

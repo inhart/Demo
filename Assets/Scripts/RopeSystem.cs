@@ -62,9 +62,8 @@ public class RopeSystem : MonoBehaviour
    
     void Update ()
 	{
-       
         var aimAngle = Mathf.Atan2(Input.GetAxis("Vertical2"), Input.GetAxis("Horizontal2"));
-       
+        
         if (aimAngle < 0f)
         {
             aimAngle = Mathf.PI * 2 + aimAngle;
@@ -79,8 +78,6 @@ public class RopeSystem : MonoBehaviour
         }
         var aimDirection = Quaternion.Euler(0, 0, aimAngle * Mathf.Rad2Deg) * Vector2.right;
         playerPosition = transform.position;
-
-
         if (!ropeAttached)
         {
             SetCrosshairPosition(aimAngle);
@@ -195,8 +192,8 @@ public class RopeSystem : MonoBehaviour
             crosshairSprite.enabled = true;
         }
 
-        var x = transform.position.x + 1f * Mathf.Cos(aimAngle * 2);
-        var y = transform.position.y + 1f * Mathf.Sin(aimAngle * 2);
+        var x = transform.position.x + 1f * -Mathf.Sin(aimAngle);
+        var y = transform.position.y + 1f * -Mathf.Cos(aimAngle);
 
         var crossHairPosition = new Vector3(x, y, 0);
         crosshair.transform.position = crossHairPosition;
