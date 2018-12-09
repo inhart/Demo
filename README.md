@@ -2,7 +2,8 @@
 
 PS4 Controller Map for Unity
 
-Buttons
+Buttons:
+
     Square  = joystick button 0
     X       = joystick button 1
     Circle  = joystick button 2
@@ -19,6 +20,7 @@ Buttons
     PadPress= joystick button 13
 
 Axes:
+
     LeftStickX      = X-Axis
     LeftStickY      = Y-Axis (Inverted?)
     RightStickX     = 3rd Axis
