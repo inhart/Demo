@@ -51,8 +51,7 @@ public class RopeSystem : MonoBehaviour
     private Vector2 GetClosestColliderPointFromRaycastHit(RaycastHit2D hit, PolygonCollider2D polyCollider)
     {
         // Transform polygoncolliderpoints to world space (default is local)
-        var distanceDictionary = polyCollider.points.ToDictionary<Vector2, float, Vector2>(
-            position => Vector2.Distance(hit.point, polyCollider.transform.TransformPoint(position)), 
+        var distanceDictionary = polyCollider.points.ToDictionary<Vector2, float, Vector2> (position => Vector2.Distance(hit.point, polyCollider.transform.TransformPoint(position)), 
             position => polyCollider.transform.TransformPoint(position));
 
         var orderedDictionary = distanceDictionary.OrderBy(e => e.Key);
@@ -92,26 +91,29 @@ public class RopeSystem : MonoBehaviour
             // Wrap rope around points of colliders if there are raycast collisions between player position and their closest current wrap around collider / angle point.
 	        if (ropePositions.Count > 0)
 	        {
-	            var lastRopePoint = ropePositions.Last();
-                var playerToCurrentNextHit = Physics2D.Raycast(playerPosition, (lastRopePoint - playerPosition).normalized, Vector2.Distance(playerPosition, lastRopePoint) - 0.1f, ropeLayerMask);
-                if (playerToCurrentNextHit)
-                {
-                    var colliderWithVertices = playerToCurrentNextHit.collider as PolygonCollider2D;
-                    if (colliderWithVertices != null)
-                    {
-                        var closestPointToHit = GetClosestColliderPointFromRaycastHit(playerToCurrentNextHit, colliderWithVertices);
-                        if (wrapPointsLookup.ContainsKey(closestPointToHit))
-                        {
-                            // Reset the rope if it wraps around an 'already wrapped' position.
-                            ResetRope();
-                            return;
-                        }
+                Debug.Log(ropePositions.Count);
+                    Vector2 lastRopePoint = ropePositions.Last();
 
-                        ropePositions.Add(closestPointToHit);
-                        wrapPointsLookup.Add(closestPointToHit, 0);
-                        distanceSet = false;
+                    RaycastHit2D playerToCurrentNextHit = Physics2D.Raycast(playerPosition, (lastRopePoint - playerPosition).normalized, Vector2.Distance(playerPosition, lastRopePoint) - 0.1f, ropeLayerMask);
+                    if (playerToCurrentNextHit)
+                    {
+                        var colliderWithVertices = playerToCurrentNextHit.collider as PolygonCollider2D;
+                        if (colliderWithVertices != null)
+                        {
+                            var closestPointToHit = GetClosestColliderPointFromRaycastHit(playerToCurrentNextHit, colliderWithVertices);
+                            if (wrapPointsLookup.ContainsKey(closestPointToHit))
+                            {
+                                // Reset the rope if it wraps around an 'already wrapped' position.
+                                ResetRope();
+                                return;
+                            }
+
+                            ropePositions.Add(closestPointToHit);
+                            wrapPointsLookup.Add(closestPointToHit, 0);
+                            distanceSet = false;
+                        }
                     }
-                }
+                
             }
         }
 
@@ -119,6 +121,8 @@ public class RopeSystem : MonoBehaviour
         HandleRopeLength();
         HandleInput(aimDirection);
         HandleRopeUnwrap();
+        Vector3 dir = (this.transform.position - crosshair.transform.position);
+        Debug.DrawLine(playerPosition, crosshair.position - dir * 10, Color.red);
     }
 
     /// <summary>
@@ -129,11 +133,13 @@ public class RopeSystem : MonoBehaviour
     {
         if ((Input.GetButtonDown("Fire1")) || (Input.GetButtonDown("Fire3")))
         {
-            Debug.Log("xd");
-            if (ropeAttached) return;
+            if (ropeAttached)
+            {
+                return;
+            }
             ropeRenderer.enabled = true;
-            Vector3 dir = (this.transform.position - crosshair.transform.position).normalized;
-            Debug.DrawLine(playerPosition, crosshair.position - dir * 10, Color.red);
+            Vector3 dir = (this.transform.position - crosshair.transform.position);
+            Debug.DrawLine(playerPosition, crosshair.position - dir * 10, Color.green, 1);
             var hit = Physics2D.Raycast(playerPosition, crosshair.position - dir * 10, ropeMaxCastDistance, ropeLayerMask);
             if (hit.collider != null)
             {
@@ -145,7 +151,7 @@ public class RopeSystem : MonoBehaviour
                     transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, fuerzaEnganche), ForceMode2D.Impulse);
                     ropePositions.Add(hit.point);
                     wrapPointsLookup.Add(hit.point, 0);
-                    ropeJoint.distance = Vector2.Distance(playerPosition, hit.point)*separacion;
+                    ropeJoint.distance = Vector2.Distance(playerPosition, hit.point);
                     ropeJoint.enabled = true;
                     ropeHingeAnchorSprite.enabled = true;
                     
