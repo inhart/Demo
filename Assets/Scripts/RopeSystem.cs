@@ -22,7 +22,7 @@ public class RopeSystem : MonoBehaviour
     private bool isColliding;
     private Dictionary<Vector2, int> wrapPointsLookup = new Dictionary<Vector2, int>();
     private SpriteRenderer ropeHingeAnchorSprite;
-    public float fuerzaEnganche = 3f;
+    public float fuerzaEnganche = 1f;
     public float separacion = 0.3f;
 
     void Awake ()
@@ -119,8 +119,6 @@ public class RopeSystem : MonoBehaviour
         HandleRopeLength();
         HandleInput(aimDirection);
         HandleRopeUnwrap();
-
-
     }
 
     /// <summary>
@@ -129,12 +127,14 @@ public class RopeSystem : MonoBehaviour
     /// <param name="aimDirection">The current direction for aiming based on mouse position</param>
     private void HandleInput(Vector2 aimDirection)
     {
-        if ((Input.GetButtonDown("Fire1")) || (Input.GetKeyDown(KeyCode.F)))
+        if ((Input.GetButtonDown("Fire1")) || (Input.GetButtonDown("Fire3")))
         {
+            Debug.Log("xd");
             if (ropeAttached) return;
             ropeRenderer.enabled = true;
-
-            var hit = Physics2D.Raycast(playerPosition, aimDirection, ropeMaxCastDistance, ropeLayerMask);
+            Vector3 dir = (this.transform.position - crosshair.transform.position).normalized;
+            Debug.DrawLine(playerPosition, crosshair.position - dir * 10, Color.red);
+            var hit = Physics2D.Raycast(playerPosition, crosshair.position - dir * 10, ropeMaxCastDistance, ropeLayerMask);
             if (hit.collider != null)
             {
                 ropeAttached = true;
