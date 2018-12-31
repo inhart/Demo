@@ -10,6 +10,22 @@ TagManager:
   - RightFlip
   - Block
   - Caput
+  - Rueda
+  - Hexagon
+  - Ball
+  - Arrow
+  - Gun
+  - Ancla
+  - zapaia
+  - eskubi
+  - lurra
+  - ezkerra
+  - progress
+  - level
+  - ball
+  - hexagon
+  - Shot
+  - chain
   layers:
   - Default
   - TransparentFX
@@ -20,20 +36,20 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - Rope
+  - 
   - Pivot
   - Player
   - Floor
   - Block
   - Caput
+  - Hexagon
+  - Ball
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Shot
+  - chain
   - 
   - 
   - 

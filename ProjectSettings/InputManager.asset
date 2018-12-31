@@ -218,7 +218,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick button 5
+    positiveButton: joystick button 3
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -294,7 +294,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Vertical2
+    m_Name: RightJoystickY
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -307,10 +307,10 @@ InputManager:
     snap: 0
     invert: 1
     type: 2
-    axis: 0
+    axis: 4
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Horizontal2
+    m_Name: RightJoystickX
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -323,7 +323,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 1
+    axis: 3
     joyNum: 0
   - serializedVersion: 3
     m_Name: Rueda
@@ -332,12 +332,60 @@ InputManager:
     negativeButton: 
     positiveButton: n
     altNegativeButton: 
-    altPositiveButton: joystick button 4
+    altPositiveButton: 
     gravity: 0
     dead: 0.01
     sensitivity: 0.1
     snap: 0
     invert: 0
     type: 2
-    axis: 27
+    axis: 8
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Rueda
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 4
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.01
+    sensitivity: 0.1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: RightJoystickY
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 5
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: RightJoystickX
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 2
     joyNum: 0

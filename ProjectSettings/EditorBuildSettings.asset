@@ -6,6 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/vikings/demo2.unity
+    guid: cb5952cb9af2ddc458595e08f364a421
+  - enabled: 1
+    path: Assets/Scenes/sp/main.unity
+    guid: 988f4f970dfa5b24aa75e355ab2cbe60
+  - enabled: 1
+    path: Assets/Scenes/sp/selectMode.unity
+    guid: 59d7f792cf6add643ad9895ff57fe841
+  - enabled: 1
+    path: Assets/Scenes/sp/Panic.unity
+    guid: 22c32decc22128e4789a6a3ed57749c1
+  - enabled: 1
+    path: Assets/Scenes/sp/Tour_01.unity
+    guid: 762a0abe7a15118458e3e5534db6821f
+  - enabled: 1
+    path: Assets/Scenes/sb/Hasiera.unity
+    guid: a89ab991432e1544e840c43f6b6a3fc2
+  - enabled: 1
+    path: Assets/Scenes/sb/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
